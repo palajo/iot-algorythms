@@ -2,7 +2,7 @@ from csv import input_data, output_data
 
 
 # input file
-filename = "hamster3.csv"
+filename = "hamster2.csv"
 data = input_data("data/input/" + filename)
 
 
@@ -28,15 +28,15 @@ for hamster in hamsters:
 
 # purchasing hamster while enough food
 checked_hamsters = 0
-puchased_hamsters = 0
+purchased_hamsters = 0
 
 while (food_storage > 0) and (checked_hamsters < available_hamsters):
     checked_hamsters += 1 
 
     if sum(hamsters_appetite[checked_hamsters - 1][:checked_hamsters]) <= food_storage:
-        puchased_hamsters += 1
+        purchased_hamsters += 1
 
 
 # results
-print("We could afford %d hamster(s)" % puchased_hamsters)
-output_data("data/output/" + filename, puchased_hamsters)
+print("We could afford %d hamster(s)" % purchased_hamsters)
+output_data("data/output/" + filename, purchased_hamsters)
