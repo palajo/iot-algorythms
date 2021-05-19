@@ -1,14 +1,18 @@
+from models.Graph import Graph
+
+
 def input_data(filename):
+
+    graph = Graph()
 
     with open(filename, 'r') as file:
         lines = file.readlines()
 
-        vertexes, connections = tuple(int(x) for x in lines[0].split())
-        clients = tuple(int(x) for x in lines[1].split())
-
-        requests = []
+        nodes, connections = (int(x) for x in lines[0].split())
+        clients = (int(x) for x in lines[1].split())
 
         for line in lines[2:]:
-            requests.append(tuple(int(x) for x in line.split()))
+            start_vertex, end_vertex, ping = (int(x) for x in line.split())
+            graph.create_edges(start_vertex, end_vertex, ping)
 
-    return vertexes, connections, clients, requests
+    return nodes, connections, clients, graph
